@@ -5,6 +5,7 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
 
+
 /*
  * Webpack Plugins
  */
@@ -178,10 +179,23 @@ module.exports = {
       },
       
       /* File loader for supporting images, for example, in CSS files.
+      
+      {
+        test: /\.(eot|jpg|png|gif|woff|woff2|svg|ttf|otf)$/,
+        loaders: ['file']
+      }
       */
       {
-        test: /\.(jpg|png|gif)$/,
-        loader: 'file'
+        // The complex '\?v=', etc., is added for font-awesome's file names
+        test: /\.(png|jpe?g|ico|gif|(svg|ttf|eot|woff(2)?)(\?v=\d+\.\d+\.\d+)?)$/i,
+        loader: 'url',
+        query: {
+          name: 'assets/[name].[hash].[ext]',
+          // If the file is smaller than 10kb, inline it with url-loader
+          // as a data URI. If not, fall back to the file-loader to load
+          // the file as-is.
+          limit: 10000
+        }
       }
     ]
 

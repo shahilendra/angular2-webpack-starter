@@ -3,6 +3,8 @@
 // at the entry point of the async loaded file. Also see custom-typings.d.ts as you also need to
 // run `typings install x` where `x` is your module
 
+import 'babel-polyfill';
+
 // Angular 2
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
@@ -19,6 +21,16 @@ import '@angularclass/request-idle-callback';
 // RxJS
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
+
+// fontawesome
+import 'font-awesome/css/font-awesome.css';
+
+import 'font-awesome/fonts/fontawesome-webfont.eot';
+import 'font-awesome/fonts/fontawesome-webfont.svg';
+import 'font-awesome/fonts/fontawesome-webfont.ttf';
+import 'font-awesome/fonts/fontawesome-webfont.woff';
+import 'font-awesome/fonts/fontawesome-webfont.woff2';
+
 
 if ('production' === ENV) {
   // Production
